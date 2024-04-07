@@ -4,15 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+	<link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
 	
 	<title> Mercado Liebre Argentina</title>
 			<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="/public/css/">
 	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="./css/app.css">
+	<link rel="stylesheet" href="/public/css/app.css"> <!-- sacamos el punto porque antes era un archivo hora una ruta -->
 </head>
 <body>
 	<!-- Header -->
@@ -20,13 +20,13 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
-					<a href="index.html" class="main-header_home-link">
-						<img src="./images/logo-mercado-liebre.svg">
+					<a href="/" class="main-header_home-link">
+						<img src="/images/logo-mercado-liebre.svg">
 					</a>
 				</div>
 	
 				<div class="col-7 col-md-6">
-					<form action="search-results.html" method="GET" class="search-form">
+					<form action="/search-results" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar productos, marcas y más" class="search-form_input">
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
@@ -46,7 +46,7 @@
 	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
-					<li><a href="index.html">Todos los productos</a></li>
+					<li><a href="/">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
 	
@@ -63,11 +63,11 @@
 						</form>
 					</li> -->
 					<li>
-						<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
+						<a href="/register">Creá tu cuenta <i class="far fa-address-card"></i>
 						</a>
 					</li>
 					<li>
-						<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
+						<a href="/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
 					</li>
 				</ul>
 			</nav>
@@ -77,7 +77,7 @@
 	
 	<!-- Banner -->
 	<div class="banner">
-		<img src="images/img-home-banner.jpg" alt="Banner de ofertas">
+		<img src="/images/img-home-banner.jpg" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
 
@@ -90,9 +90,9 @@
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -104,9 +104,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -119,9 +119,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -134,9 +134,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -159,9 +159,9 @@
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -173,9 +173,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -187,9 +187,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -201,9 +201,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
