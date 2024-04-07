@@ -1,9 +1,9 @@
-const express = requiere ("express"); 
+const express = require("express"); 
 const app = express();
 
-const indexController = requiere("./controllers/indexController");
+const indexController = require("./controllers/indexController");
 
-app.use ("/", indexController);
+app.use("/",indexController);
 
 app.set("view engine", "ejs");
 
