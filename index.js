@@ -3,7 +3,14 @@ const app = express();
 
 const indexController = require("./controllers/indexController");
 
-// app.use("/",indexController);
+const loginController = require("./controllers/loginController");
+
+const registerController = require("./controllers/registerController");
+
+
+app.use("/",indexController);
+app.use("/login",loginController);
+app.use("/register",registerController);
 
 app.use(express.static(__dirname + "/public")); //variable de cual es mi directorio actual 
 
