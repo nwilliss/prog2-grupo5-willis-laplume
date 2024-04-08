@@ -9,11 +9,17 @@ const registerController = require("./controllers/registerController");
 
 const productAddController = require("./controllers/productAddController");
 
+const profileController = require("./controllers/profileController");
+
+const profileEditController = require("./controllers/profileEditController");
+
 
 app.use("/index",indexController);
 app.use("/login",loginController);
 app.use("/register",registerController);
-app.use("/product-add",productAddController);
+app.use("/product-add", productAddController);
+app.use("/profile", profileController);
+app.use("/profile-edit", profileEditController);
 
 
 app.use(express.static(__dirname + "/public")); //variable de cual es mi directorio actual 
