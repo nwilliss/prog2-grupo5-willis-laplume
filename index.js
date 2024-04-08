@@ -7,10 +7,14 @@ const loginController = require("./controllers/loginController");
 
 const registerController = require("./controllers/registerController");
 
+const productAddController = require("./controllers/productAddController");
 
-app.use("/",indexController);
+
+app.use("/index",indexController);
 app.use("/login",loginController);
 app.use("/register",registerController);
+app.use("/product-add",productAddController);
+
 
 app.use(express.static(__dirname + "/public")); //variable de cual es mi directorio actual 
 
