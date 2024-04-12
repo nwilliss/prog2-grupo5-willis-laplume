@@ -1,8 +1,10 @@
-const express = require("express"); 
-const router= express.Router();
+const indexController = {
+    index: function(req, res) {
+        res.render('index');
+    },
+    search: function(req, res) {
+        res.render('search-results');
+    }
+}
 
-router.get ("/", (req, res)=> {
-    res.render ("");
-});
-
-module.exports = router; 
+module.exports = indexController;
