@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: #9b9898;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -164,7 +164,7 @@ hr {
 
 /*====== Products ======*/
 .products-wrapper {
-  margin-top: 30px;
+  margin-top: 250px;
   margin-bottom: 30px;
 }
 
@@ -238,7 +238,9 @@ hr {
   align-items: center;
   transition: 300ms;
 }
-
+div.container.products-wrapper {
+background-color:#b0acac;
+}
 .noproducts {
   text-align: center
 }
@@ -259,7 +261,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color:#abaaaa;
   padding: 20px 0;
   margin-top: 80px;
 }
