@@ -12,3 +12,4 @@ router.get('/profile', userController.profile);
 router.get('/profile-edit', userController.profileEdit);
 
 module.exports = router;
+

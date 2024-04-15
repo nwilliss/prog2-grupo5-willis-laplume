@@ -1,17 +1,19 @@
-const express = require("express");
-const router = express.Router();
+const db = require('../db/objeto');
 
-router.get ("/register", (req, res)=> {
-    res.render ("register");
-});
-router.get ("/profile-edit", (req, res)=> {
-    res.render ("profile-edit");
-});
-router.get ("/profile", (req, res)=> {
-    res.render ("profile");
-});
-router.get ("/login", (req, res)=> {
-    res.render ("login");
-});
+const userController = {
+    login: function(req, res) {
+        res.render('login');
+    },
+    register: function(req, res) {
+        res.render('register');
+    },
+    profile: function(req, res) {
+        
+        res.render('profile', {usuario: db.usuario});
+    },
+    profileEdit: function(req, res) {
+        res.render('profile-edit');
+    }
+}
 
-module.exports = router; 
+module.exports = userController;
