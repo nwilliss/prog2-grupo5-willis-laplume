@@ -9,18 +9,18 @@ const db = {
     },
     productos: [
     {
-        imagen: "https://nikearprod.vtexassets.com/arquivos/ids/785924/DH8010_002_A_PREM.jpg?v=638336829230300000",
-        nombre: "Zapatillas Nike Air Max",
-        descripcion: "Zapatillas de running con tecnología Air Max",
+        imagen: "https://www.tripstore.com.ar/media/catalog/product/cache/4769e4d9f3516e60f2b4303f8e5014a8/G/Y/GY9420_0_23.jpg",
+        nombre: "adidas handball spezial",
+        descripcion: "Zapatillas para andar, material gamuza y cuero, impermeables y de horma grande. Unisex.",
         comentarios: [
             {
                 nombre: "Lucía",
-                comentario: "Me encantan estas zapatillas, son súper cómodas para correr.",
+                comentario: "Me encantan estas zapatillas, son súper cómodas y todo el mundo me dice que las quiere.",
                 imagen: "https://media.vogue.mx/photos/60e49f2d3a0166093ab3cabc/master/pass/nicki-nicole.jpg"
             },
             {
                 nombre: "Martín",
-                comentario: "Las compré hace una semana y estoy muy contento con la calidad del producto.",
+                comentario: "Las compré hace una semana y estoy muy contento con la calidad del producto. de verdad son muy comodas y las puede usar mi novia porque son unisex.",
                 imagen: "https://www.radiodos.com.ar/content/bucket/6/191276w770h770c.jpg.webp"
             }
         ]

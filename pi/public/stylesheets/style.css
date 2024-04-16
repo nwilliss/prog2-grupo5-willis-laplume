@@ -264,8 +264,26 @@ background-color:#b0acac;
   background-color:#abaaaa;
   padding: 20px 0;
   margin-top: 80px;
+  
+}
+/* los loguitos de abajo  */
+.fas.fa-gift{ 
+  color:grey;
+}
+.fas.fa-credit-card{
+  color:grey;
+}
+.fas.fa-user-shield{
+  color:grey;
 }
 
+
+.container{
+  width: 1100px;
+}
+.row{
+  width: 1100px;
+}
 .footer-data {
   text-align: center;
 }
