@@ -25,11 +25,43 @@
 			//////////////// -->
 			</h2>
 
-			<form action="/register" method="GET" class="col-12">
+
+			<div class="container products-wrapper">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="products-title">Registrate</h2>
+					</div>
+					<form action="/register" method="post">
+						<input class="form-input" type="text" name="nombre" placenoholder="nombre" required>
+						<input class="form-input" type="email" name="email" placeholder="Email" required>
+						<input class="form-input" type="text" name="usuario" placeholder="Usuario" required>
+						<input class="form-input" type="password" name="contrasenia" id="contrasenia" placeholder="Contraseña" required minlength="4">
+			
+						<label for="fecha" class="label">Fecha de nacimiento</label>
+						<input class="form-input" type="date" name="fecha">
+			
+						<label for="dni" class="label">Número de documento</label>
+						<input class="form-input" type="number" name="doc">
+			
+						<label for="fotoPerfil" class="label">Foto de perfil</label>
+						<input class="form-input" type="text" name="fotoPerfil">
+			
+						<button class="form-label" type="submit">Registrarse</button>
+					</form>    
+				</div>
+			</div>
+
+
+
+
+
+<!-- 
+
+
+			<form action="/register" method="post" class="col-12">
 				<div class="form-group">
 					<label for="name">Nombre</label>
-					<input 
-					required
+					<input required
 					
 					type="text" class="form-control" id="name" name="name" placeholder="Ingresá tu nombre">
 				</div>
@@ -69,7 +101,7 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Registrarse</button>	
 			</form>
-
+ -->
 
 
 
