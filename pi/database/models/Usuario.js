@@ -41,4 +41,15 @@ let alias = "Usuario"
     }
 
     let Usuario = sequelize.define(alias, cols, config) //estos tres son parametros 
+    Usuario.associate = function (models) {
+        Usuario.hasMany(models.Comentario, {
+          as: "comentarios",
+          foreignKey: "usuarioId",
+        });
+        Usuario.hasMany(models.Producto, {
+          as: "productos",
+          foreignKey: "usuarioId",
+        });
+      };
+
     return Usuario 

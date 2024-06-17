@@ -33,6 +33,16 @@ let alias = "Comentario"
         underscored: true,
 
     }
-
-    let Comentario = sequelize.define(alias, cols, config) //estos tres son parametros 
+    let Comentario = sequelize.define(alias, cols, config); //estos tres son parametros
+    Comentario.associate = function (models) {
+      Comentario.belongsTo(models.Usuario, {
+        as: "usuario",
+        foreignKey: "usuarioId",
+      });
+      Comentario.belongsTo(models.Producto, {
+        as: "producto",
+        foreignKey: "productosId",
+      });
+    };
+    
     return Comentario 
