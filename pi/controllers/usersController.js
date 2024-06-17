@@ -8,8 +8,7 @@ const userController = {
       return res.redirect("/register");
     }
     res.render("login")
-  } 
-
+  }, 
   register: function (req, res) {
     if (req.session.usuario !== undefined) {
       return res.redirect("/profile");
