@@ -3,12 +3,6 @@ const db = require("../database/models/Usuario");
 const bcrypt = require("bcryptjs");
 
 const userController = {
-  index: function (req, res) {
-    if (req.session.usuario === undefined) {
-      return res.redirect("/register");
-    }
-    res.render("login");
-  },
   register: function (req, res) {
     if (req.session.usuario !== undefined) {
       return res.redirect("/profile");

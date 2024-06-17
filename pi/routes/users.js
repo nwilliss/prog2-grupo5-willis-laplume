@@ -82,11 +82,7 @@ let registerValidations = [
 ];
 router.post("/store", registerValidations, indexController.processRegister);
 /* GET users listing. */
-router.get("/login", userController.index);
-
-router.post("/login", userController.login);
-
-router.post("/logout", userController.logout);
+router.get ("/login", userController.login);
 
 router.get("/register", userController.register);
 
