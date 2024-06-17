@@ -3,7 +3,7 @@ const db = require("../database/models/Usuario");
 const bcrypt = require("bcryptjs");
 
 const userController = {
-  register: function (req, res) {
+  index: function (req, res) {
     if (req.session.usuario !== undefined) {
       return res.redirect("/profile");
     }
@@ -25,6 +25,24 @@ const userController = {
     };
     db.Usuario.create(usuario);
     res.redirect("/profile");
+  },
+  login: function(req,res){
+    db.Usuario.findOne({
+      where: {
+        email: req.body.email,
+      },
+    }).then(function(usuario){
+      if (usuario){
+        if (bcrypt.compareSync(req.body.password, usuario.password)) {
+          req.session.usuario = usuario;
+          res.redirect("/profile");
+        } else {
+          res.send("contraseña incorrecta");
+        }
+      } else {
+        res.send("el mail no se encuentra registrado")
+      }
+    })
   }
  
 };
