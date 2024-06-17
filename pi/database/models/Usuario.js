@@ -9,7 +9,7 @@ let alias = "Usuario"
         email:{
             type: dataTypes.STRING
         },
-        contraseña:{
+        contrasenia:{
             type: dataTypes.STRING
         },
         fecha:{
