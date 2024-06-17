@@ -52,7 +52,12 @@ const userController = {
         res.send("el mail no se encuentra registrado")
       }
     })
-  }
- 
+  }, 
+  logout: function (req,res){
+    req.session.destroy();
+    res.clearCookie("user");
+    res.redirect("/");
+  },
 };
+
 module.exports = userController;
