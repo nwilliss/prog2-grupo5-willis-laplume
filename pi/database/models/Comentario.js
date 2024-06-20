@@ -1,3 +1,4 @@
+module.exports = (sequelize, dataTypes) =>{
 let alias = "Comentario"
 
     let cols = {
@@ -32,7 +33,8 @@ let alias = "Comentario"
         timestamps: true,
         underscored: true,
 
-    }
+    }; 
+    
     let Comentario = sequelize.define(alias, cols, config); //estos tres son parametros
     Comentario.associate = function (models) {
       Comentario.belongsTo(models.Usuario, {
@@ -45,4 +47,6 @@ let alias = "Comentario"
       });
     };
     
-    return Comentario 
+    return Comentario;
+
+};

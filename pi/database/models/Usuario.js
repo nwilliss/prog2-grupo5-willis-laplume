@@ -1,3 +1,4 @@
+module.exports = (sequelize, dataTypes) =>{
 let alias = "Usuario"
 
     let cols = {
@@ -9,9 +10,12 @@ let alias = "Usuario"
         email:{
             type: dataTypes.STRING
         },
-        contrasenia:{
-            type: dataTypes.STRING
-        },
+        Usuario: {
+            type: dataTypes.STRING,
+          },
+        contrasenia: {
+            type: dataTypes.STRING,
+            },
         fecha:{
             type: dataTypes.DATE
         },
@@ -36,20 +40,21 @@ let alias = "Usuario"
     let config ={
         tableName: "usuarios",
         timestamps: true,
-        underscored: true,
+        underscored: false,
 
     }
 
-    let Usuario = sequelize.define(alias, cols, config) //estos tres son parametros 
+    let Usuario = sequelize.define(alias, cols, config); //estos tres son parametros
     Usuario.associate = function (models) {
-        Usuario.hasMany(models.Comentario, {
-          as: "comentarios",
-          foreignKey: "usuarioId",
-        });
-        Usuario.hasMany(models.Producto, {
-          as: "productos",
-          foreignKey: "usuarioId",
-        });
-      };
+      Usuario.hasMany(models.Comentario, {
+        as: "comentarios",
+        foreignKey: "usuarioId",
+      });
+      Usuario.hasMany(models.Producto, {
+        as: "productos",
+        foreignKey: "usuarioId",
+      });
+    };
 
-    return Usuario 
+    return Usuario;
+};

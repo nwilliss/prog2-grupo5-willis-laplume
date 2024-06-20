@@ -1,4 +1,5 @@
-let alias = "Producto";
+module.exports = (sequelize, dataTypes) =>{
+  let alias = "Producto";
 
 let cols = {
   id: {
@@ -32,11 +33,15 @@ let config = {
   underscored: true,
 };
 
+
 let Producto = sequelize.define(alias, cols, config); //estos tres son parametros
 
-Producto.belongsTo(models.Usuario, {
-  as: "usuario",
-  foreignKey: "id_usuario",
-});
+  Producto.associate = function (models) {
+    Producto.belongsTo(models.Usuario, {
+      as: "usuario",
+      foreignKey: "id_usuario",
+    });
+  };
 
 return Producto;
+};

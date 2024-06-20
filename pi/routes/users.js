@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var userController = require("../controllers/usersController");
 let { body } = require("express-validator");
+const indexController = require("../controllers/indexController");
 
 let registerValidations = [
   body("email") //vas a login ejs y te fijas el nombre del campo
@@ -12,7 +13,7 @@ let registerValidations = [
     .withMessage("ingrese emial valido")
 
     .custom(function (value) {
-      //validar que el email exista en la baase de datos
+      //validar que el email exista en la base de datos
       return db.User.findOne({
         where: { email: value },
       }).then(function (user) {
@@ -21,6 +22,7 @@ let registerValidations = [
         }
       });
     }),
+
 
   body("nombre").notEmpty().withMessage("por favor complete el campo nombre."),
 
@@ -44,6 +46,8 @@ router.post("/logout", userController.logout);
 router.get("/register", userController.register);
 
 router.get("/profile", userController.profile);
+
+router.post("/store", registerValidations, userController.store);
 
 router.get("/profile-edit", userController.profileEdit);
 

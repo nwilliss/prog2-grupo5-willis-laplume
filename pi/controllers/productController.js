@@ -12,6 +12,11 @@ var productController = {
     });
     res.render("product", { productos: db.productos });
   },
+
+
+
+
+
   add: function (req, res) {
     res.render("product-add");
   },
