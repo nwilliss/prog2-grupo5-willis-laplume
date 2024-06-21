@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const userController = {
   index: function(req,res){
-    if (req.session !== undefined && req.session.usuario !== undefined) {
+    if (req.session !== undefined) {
       return res.redirect("/");
     }
     res.render("login",{ usuario: undefined });
@@ -40,13 +40,17 @@ const userController = {
         email: req.body.email,
       },
     }).then(function(usuario){
+      let datosUsuario = usuario.dataValues;
+
+      console.log(req.body.contrasenia, datosUsuario);
       if (usuario){
-        if (bcrypt.compareSync(req.body.password, usuario.password)) {
+        if (bcrypt.compareSync(req.body.contrasenia, datosUsuario.contrasenia)) {
+          console.log(req.session, usuario);
           req.session.usuario = usuario;
           if(req.body.remember){
             res.cookie("user", usuario.id, {maxAge: 1000 * 60 * 60 * 24}) //24 horas de vida
           }
-          res.redirect("/profile");
+          res.redirect("/");
         } else {
           res.send("contraseña incorrecta");
         }

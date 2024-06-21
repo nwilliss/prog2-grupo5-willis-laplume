@@ -34,8 +34,7 @@ let alias = "Usuario"
         deletedAt:{
             type: dataTypes.DATE
         },
-
-    }
+    };
 
     let config ={
         tableName: "usuarios",

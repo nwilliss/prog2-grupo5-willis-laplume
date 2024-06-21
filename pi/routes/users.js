@@ -35,7 +35,6 @@ let registerValidations = [
   //falta poner que este en forma encriptada hashing hppt
 ];
 
-router.post("/store", registerValidations, indexController.processRegister);
 /* GET users listing. */
 router.get ("/login", userController.index);
 
