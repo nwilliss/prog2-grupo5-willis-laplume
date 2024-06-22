@@ -10,7 +10,7 @@ let alias = "Usuario"
         email:{
             type: dataTypes.STRING
         },
-        Usuario: {
+        usuario: {
             type: dataTypes.STRING,
           },
         contrasenia: {
@@ -25,15 +25,7 @@ let alias = "Usuario"
         fotoPerfil:{
             type: dataTypes.STRING
         },
-        createdAt:{
-            type: dataTypes.DATE
-        },
-        updatedAt:{
-            type: dataTypes.DATE
-        },
-        deletedAt:{
-            type: dataTypes.DATE
-        },
+       
     };
 
     let config ={

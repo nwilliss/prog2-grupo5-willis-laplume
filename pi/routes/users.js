@@ -44,10 +44,10 @@ router.post("/logout", userController.logout);
 
 router.get("/register", userController.register);
 
-router.get("/profile", userController.profile);
-
 router.post("/store", registerValidations, userController.store);
 
 router.get("/profile-edit", userController.profileEdit);
+
+router.get("profile/:id?", userController.profile)
 
 module.exports = router;

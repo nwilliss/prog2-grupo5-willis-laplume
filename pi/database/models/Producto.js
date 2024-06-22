@@ -7,23 +7,17 @@ let cols = {
     primaryKey: true,
     type: dataTypes.INTEGER,
   },
-  imagenProducto: {
+  imagen: {
     type: dataTypes.STRING,
   },
-  nombreProducto: {
+  nombre: {
     type: dataTypes.STRING,
   },
-  descripcionProducto: {
+  descripcion: {
     type: dataTypes.STRING,
   },
-  createdAt: {
-    type: dataTypes.DATE,
-  },
-  updatedAt: {
-    type: dataTypes.DATE,
-  },
-  deletedAt: {
-    type: dataTypes.DATE,
+  usuarioId: {
+    type: dataTypes.INTEGER,
   },
 };
 
@@ -39,8 +33,12 @@ let Producto = sequelize.define(alias, cols, config); //estos tres son parametro
   Producto.associate = function (models) {
     Producto.belongsTo(models.Usuario, {
       as: "usuario",
-      foreignKey: "id_usuario",
-    });
+      foreignKey: "usuarioId",
+    }),
+    Producto.hasMany(models.Comentario, {
+      as: "comentarios",
+      foreignKey: "productoId",
+    })
   };
 
 return Producto;

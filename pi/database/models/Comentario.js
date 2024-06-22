@@ -7,8 +7,8 @@ let alias = "Comentario"
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
-        textoComentario:{
-            type: dataTypes.STRING(500)
+        texto:{
+            type: dataTypes.STRING
         },
         usuarioId:{
             type: dataTypes.INTEGER
@@ -16,15 +16,7 @@ let alias = "Comentario"
         productosId:{
             type: dataTypes.INTEGER
         },
-        createdAt:{
-            type: dataTypes.DATE
-        },
-        updatedAt:{
-            type: dataTypes.DATE
-        },
-        deletedAt:{
-            type: dataTypes.DATE
-        },
+        
 
     }
 
