@@ -1,50 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
 
 <%- include('partials/head') %>
 
 <body>
-	<!-- Header -->
 
-	<%-include('partials/header')%>
+	<%- include('./partials/header') %>
 
-	<!-- /Header -->
-
-	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Resultados de búsqueda</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<!-- <h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá van los resultados de búsqueda. <br>
-			Eliminen estás líneas y cosntruyan la página de resultados de búsqueda. <br>
-			//////////////// -->
+			
 		<div class="container products-wrapper">
 			<div class="row">
-				<% if (products.length > 0 ){ %>
-				<% prdocuts.forEach(pruduct => { %>
-				<div class="col-12 col">
-					<section class="product-box"> 
-						<a href="/product/<%= product.id %>"
-							<figure class="product-box-image">
-							<img src="<%= product.image %>" alt="<%= product.name %>">
-							</figure>
-							<article class="product-box-data">
-								<h2><% product.name %> </h2>
-								<p><%= product.description %></p>
-								<p> comentarios: <% product.comments.legth %></p>
-								<!-- <p> usuarios <%= product.usuario.nombre</p> -->
-							</article>
 
-							
-					</section>
+				<% for (let i = 0; i < productos.length; i++) { %>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+							<a href="/product<%= productos[i].id %>">
+								<figure class="product-box_image">
+									<img src="<%= productos[i].imagen %>" alt="<%= productos[i].nombre %>">
+								</figure>
+								<article class="product-box_data">
+									<h2><%= productos[i].nombre %></h2>
+									<p><a href= "/profile/<%=productos[i].usuario.id %>"><%= productos[i].usuario.usuario %></a></p>
+								</article>
+							</a>
+						</section>
+					</div>
+				<% } %>
+			
 
-				</div>
-				})}
-				<% }) %>
-				<% } else { %>
 				<div class="col-12">
 					<p> no se enconttraron resultados para tu busqueda.</p>
 					<p>intenta con otro termino. </p>

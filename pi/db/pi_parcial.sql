@@ -48,23 +48,23 @@ CREATE TABLE comentarios(
 
 INSERT INTO usuarios (id,       email,                    contraseña,  fecha,         dni,        foto_perfil,           createdAt,          updatedAt,           deletedAt)
 VALUES               
-					 (default,  'jdoe@example.com',      '123456',     '2024/10/20',  '46452824',  'images/users/6.png', current_timestamp(), current_timestamp(), null ),
-					 (default,  'msmith@example.com',    '123456',     '2023/10/20',  '45452824',  'images/users/7.png', current_timestamp(), current_timestamp(), null ),
-                     (default,  'ajohnson@example.com',  '123456',     '2022/10/20',  '44452824',  'images/users/8.png', current_timestamp(), current_timestamp(), null ),
-                     (default,  'emiller@example.com',   '123456',     '2021/10/20',  '43452824',  'images/users/9.png', current_timestamp(), current_timestamp(), null ),
-                     (default,  'dwilliams@example.com', '123456',     '2020/10/20',  '42452824',  'images/users/10.png', current_timestamp(), current_timestamp(), null );
+					 (default,  'jdoe@example.com',      '123456',     '2024/10/20',  '46452824',  '/images/users/profile.jpeg', current_timestamp(), current_timestamp(), null ),
+					 (default,  'msmith@example.com',    '123456',     '2023/10/20',  '45452824',  '/images/users/profile.jpeg', current_timestamp(), current_timestamp(), null ),
+                     (default,  'ajohnson@example.com',  '123456',     '2022/10/20',  '44452824',  '/images/users/profile.jpeg', current_timestamp(), current_timestamp(), null ),
+                     (default,  'emiller@example.com',   '123456',     '2021/10/20',  '43452824',  '/images/users/profile.jpeg', current_timestamp(), current_timestamp(), null ),
+                     (default,  'dwilliams@example.com', '123456',     '2020/10/20',  '42452824',  '/images/users/profile.jpeg', current_timestamp(), current_timestamp(), null );
 
 INSERT INTO productos (id,       usuario_id, imagen_producto,                         nombre_producto,                             descripcion_producto,                                                                                                             createdAt,      updatedAt,          deletedAt)
-VALUES                (default, 1,          'images/products/sneakers1.png', 'Zapatillas UltraRun - Nike',       'Zapatillas diseñadas para máxima comodidad y rendimiento durante la carrera. Tecnología avanzada de amortiguación.', current_timestamp(), current_timestamp(), null ),
-                      (default, 1,          'images/products/sneakers2.png', 'Max Cushion - Adidas',             'Ideal para corredores que buscan una experiencia superior en amortiguación y soporte.', current_timestamp(), current_timestamp(), null ),
-                      (default, 2,          'images/products/sneakers3.png', 'Street Style - Puma',              'Combina comodidad y estilo urbano, perfectas para el día a día en la ciudad.', current_timestamp(), current_timestamp(), null ),
-                      (default, 2,          'images/products/sneakers4.png', 'Classic Retro - New Balance',      'Revive el estilo clásico con estas zapatillas, combinando comodidad y diseño retro.', current_timestamp(), current_timestamp(), null ),
-                      (default, 3,          'images/products/sneakers5.png', 'Trail Master - Salomon',            'Zapatillas robustas para senderismo y terrenos difíciles, ofrecen excelente tracción y protección.', current_timestamp(), current_timestamp(), null ),
-                      (default, 3,          'images/products/sneakers6.png', 'Gym King - Under Armour',           'Optimizadas para el gimnasio, estas zapatillas proporcionan la estabilidad y el apoyo necesarios para levantamiento de pesas.', current_timestamp(), current_timestamp(), null ),
-                      (default, 4,          'images/products/sneakers7.png', 'Soccer Pro - Adidas',               'Diseñadas para el futbolista moderno, ofrecen un control de balón excepcional y una sensación ligera.', current_timestamp(), current_timestamp(), null ),
-                      (default, 4,          'images/products/sneakers8.png', 'Basketball Elite - Nike',           'Maximiza tu rendimiento en la cancha con estas zapatillas diseñadas para la agilidad y el soporte.', current_timestamp(), current_timestamp(), null ),
-                      (default, 5,          'images/products/sneakers9.png', 'Casual Comfort - Skechers',         'Zapatillas casuales con tecnología de memoria para un ajuste cómodo todo el día.', current_timestamp(), current_timestamp(), null ),
-                      (default, 5,          'images/products/sneakers10.png', 'Skate Sharp - Vans',                'Diseñadas específicamente para el skateboarding, estas zapatillas ofrecen durabilidad y agarre superior.', current_timestamp(), current_timestamp(), null );
+VALUES                (default, 1,          '/images/products/default-image.png', 'Zapatillas UltraRun - Nike',       'Zapatillas diseñadas para máxima comodidad y rendimiento durante la carrera. Tecnología avanzada de amortiguación.', current_timestamp(), current_timestamp(), null ),
+                      (default, 1,          '/images/products/default-image.png', 'Max Cushion - Adidas',             'Ideal para corredores que buscan una experiencia superior en amortiguación y soporte.', current_timestamp(), current_timestamp(), null ),
+                      (default, 2,          '/images/products/default-image.png', 'Street Style - Puma',              'Combina comodidad y estilo urbano, perfectas para el día a día en la ciudad.', current_timestamp(), current_timestamp(), null ),
+                      (default, 2,          '/images/products/default-image.png', 'Classic Retro - New Balance',      'Revive el estilo clásico con estas zapatillas, combinando comodidad y diseño retro.', current_timestamp(), current_timestamp(), null ),
+                      (default, 3,          '/images/products/default-image.png', 'Trail Master - Salomon',            'Zapatillas robustas para senderismo y terrenos difíciles, ofrecen excelente tracción y protección.', current_timestamp(), current_timestamp(), null ),
+                      (default, 3,          '/images/products/default-image.png', 'Gym King - Under Armour',           'Optimizadas para el gimnasio, estas zapatillas proporcionan la estabilidad y el apoyo necesarios para levantamiento de pesas.', current_timestamp(), current_timestamp(), null ),
+                      (default, 4,          '/images/products/default-image.png', 'Soccer Pro - Adidas',               'Diseñadas para el futbolista moderno, ofrecen un control de balón excepcional y una sensación ligera.', current_timestamp(), current_timestamp(), null ),
+                      (default, 4,          '/images/products/default-image.png', 'Basketball Elite - Nike',           'Maximiza tu rendimiento en la cancha con estas zapatillas diseñadas para la agilidad y el soporte.', current_timestamp(), current_timestamp(), null ),
+                      (default, 5,          '/images/products/default-image.png', 'Casual Comfort - Skechers',         'Zapatillas casuales con tecnología de memoria para un ajuste cómodo todo el día.', current_timestamp(), current_timestamp(), null ),
+                      (default, 5,          '/images/products/default-image.png', 'Skate Sharp - Vans',                'Diseñadas específicamente para el skateboarding, estas zapatillas ofrecen durabilidad y agarre superior.', current_timestamp(), current_timestamp(), null );
 
 
 INSERT INTO comentarios (id, productos_id, usuario_id, texto_comentario, createdAt, updatedAt, deletedAt)

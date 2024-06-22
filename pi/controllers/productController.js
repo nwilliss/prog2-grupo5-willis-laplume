@@ -1,5 +1,7 @@
 const { or, where } = require("sequelize");
 var db = require("../database/models");
+const Producto = db.Producto;
+const Op = db.Sequelize.Op; 
 
 var productController = {
   product: function (req, res) {
@@ -13,26 +15,38 @@ var productController = {
     res.render("product", { productos: db.productos });
   },
 
-
-
-
-
   add: function (req, res) {
     res.render("product-add");
   },
+
   search: function (req, res) {
-    let busqueda = req.body.busqueda;
+    let busqueda = req.query.search;
     Producto.findAll({
       where: {
-        nombreProducto: { [Op.like]: "%" + busqueda + "%" },
+        [Op.or]: [
+          { nombre: { [Op.like]: "%" + busqueda + "%" } },
+          { descripcion: { [Op.like]: "%" + busqueda + "%" } }
+        ]
       },
-      or: {
-        descripcionProducto: { [Op.like]: "%" + busqueda + "%" },
-      },
-      order: [["created_at", "DESC"]],
+      include: [
+        {
+          association: "usuario",
+        }
+      ],
+
+      order: [["createdAt", "DESC"]],
     }).then(function (productos) {
-      res.render("search-results", { productos: productos });
-    });
+     //res.send(productos)
+     return res.render("search-results", {productos : productos } );
+    
+    })
+    
+    .catch(function (error) {
+      return res.send(error)
+
+     })
+    
+  
   },
 };
 
