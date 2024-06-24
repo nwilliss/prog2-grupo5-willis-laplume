@@ -5,15 +5,25 @@ const {body} = require ("express-validator");
 
 let addValidation = [
 
-    body("imagen").notEmpty().withMessage("Debes subir una imagen"),
-    body("nombre").notEmpty.withMessage("Debes completar el nombre"),
-    body("descripcion").notEmpty.withMessage("Debes completar la descripción"),
+    body("imagen")
+    .notEmpty().withMessage("Debes subir una imagen"),
+
+    body("nombre")
+    .notEmpty.withMessage("Debes completar el nombre"),
+
+    body("descripcion")
+    .notEmpty.withMessage("Debes completar la descripción"),
 ];
 
 let editValidation = [
-    body("imagen").notEmpty().withMessage("Debes subir una imagen"),
-    body("nombre").notEmpty().withMessage("Debes completar el nombre"),
-    body("descripcion").notEmpty().withMessage("Debes completar la descripción"),
+    body("imagen")
+    .notEmpty().withMessage("Debes subir una imagen"),
+    
+    body("nombre")
+    .notEmpty().withMessage("Debes completar el nombre"),
+    
+    body("descripcion")
+    .notEmpty().withMessage("Debes completar la descripción"),
 ];
 
 let commentValidation = [

@@ -53,7 +53,73 @@ let registerValidations = [
 		.notEmpty().withMessage("El campo foto de perfil no puede quedar vacío"),
 ];
 
-//AGREGAR PUNTO 11 
+let loginValidation = [
+	body("email")
+		.notEmpty().withMessage("El campo email no puede quedar vacío").bail()
+		.isEmail().withMessage("Ingrese un email válido").bail()
+		.custom(function (value) {
+			return Usuario.findOne({
+				where: { email: value },
+			}).then(function (user) {
+				if (!user) {
+					throw new Error("El email no se encuentra registrado");
+				}
+			});
+		}),
+
+	body("contrasenia")
+		.notEmpty().withMessage("El campo contraseña no puede quedar vacío").bail()
+		.isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres").bail()
+];
+
+let profileEditValidation = [
+	body("email")
+		.notEmpty().withMessage("El campo email no puede quedar vacío").bail()
+		.isEmail().withMessage("Ingrese email válido")
+		.custom(function (value, { req }) {
+			return Usuario.findOne({
+				where: {
+					email: value,
+					id: { [Op.not]: req.session.user.id }
+				}
+			}).then(function (usuario) {
+				if (usuario) {
+					throw new Error("El email ya se encuentra registrado");
+				}
+			});
+		}).withMessage("El email ya se encuentra registrado"),
+
+	body("usuario")
+		.notEmpty().withMessage("El campo usuario no puede quedar vacío").bail()
+		.isLength({ min: 4 }).withMessage("El campo usuario debe tener al menos 4 caracteres")
+		.custom(function (value, { req }) {
+			return Usuario.findOne({
+				where: {
+					usuario: value,
+					id: { [Op.not]: req.session.user.id }
+				}
+			}).then(function (usuario) {
+				if (usuario) {
+					throw new Error("El usuario ya se encuentra registrado");
+				}
+			});
+		}).withMessage("El usuario ya se encuentra registrado"),
+
+	body("contrasenia")
+		.notEmpty().withMessage("El campo contraseña no puede quedar vacío").bail()
+		.isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres"),
+
+	body("fecha")
+		.notEmpty().withMessage("El campo fecha no puede quedar vacío"),
+
+	body("dni")
+		.notEmpty().withMessage("El campo dni no puede quedar vacío").bail()
+		.isNumeric().withMessage("El campo dni debe ser numérico").bail()
+		.isLength({ min: 7, max: 8 }).withMessage("El campo dni debe tener entre 7 y 8 caracteres"),
+
+	body("fotoPerfil")
+		.notEmpty().withMessage("El campo foto de perfil no puede quedar vacío"),
+];
 
 
 

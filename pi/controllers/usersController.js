@@ -18,9 +18,6 @@ const userController = {
   },
 
 
-//cambiar lo que esta abajo no funciona bien 
-
-
 profile: function (req, res) {
   let id;
 
