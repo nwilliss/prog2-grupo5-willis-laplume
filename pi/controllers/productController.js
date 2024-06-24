@@ -1,6 +1,6 @@
-const { or, where } = require("sequelize");
 var db = require("../database/models");
 const Producto = db.Producto;
+const Comentario = db.Comentario;
 const Op = db.Sequelize.Op; 
 const { validationResults } = require("express-validator");
 
@@ -74,6 +74,73 @@ var productController = {
     
   
   },
+
+  //VALIDATE EDIT, EDIT Y DELETE 
+
+  addComment: function (req, res) {
+
+		console.log("Método comentario")
+
+		let errors = validationResult(req);
+
+		if (!req.session.user) {
+			errors.errors.push({path: 'session', msg: 'Debe iniciar sesión para comentar.'})
+		}
+
+		Producto.findByPk(req.params.id, {
+			include: [
+				{
+					association: "usuario"
+				},
+				{
+					association: "comentarios",
+					include: [
+						{
+							association: "usuario"
+						}
+					]
+				}
+			],
+			order: [["comentarios", "createdAt", "DESC"]]
+		})
+			.then(function (producto) {
+				if (errors.isEmpty()) {
+					console.log("No hay errores de formulario")
+					let comentario = {
+						texto: req.body.comentario,
+						usuarioId: req.session.user.id,
+						productoId: req.params.id
+					}
+		
+					Comentario.create(comentario)
+						.then(function (response) {
+							return res.redirect("/product/" + comentario.productoId)
+						})
+						.catch(function (error) {
+							return res.render("product", {
+								producto: producto,
+								condicion_editar_borrar : req.session.user !== undefined && req.session.user.id === producto.usuarioId,
+								errores: errors.errors.concat({path: 'comentario', msg: error})
+							})
+						})
+				} else {
+					return res.render("product", {
+						producto: producto,
+						condicion_editar_borrar : req.session.user !== undefined && req.session.user.id === producto.usuarioId,
+						errores: errors.errors
+					})
+				}
+			})
+			.catch(function (error) {
+				return res.render("product", {
+					producto: producto,
+					condicion_editar_borrar : req.session.user !== undefined && req.session.user.id === producto.usuarioId,
+					errores: errors.errors.concat({path: 'producto', msg: error})
+				})
+			})
+
+    }  
 };
+
 
 module.exports = productController;

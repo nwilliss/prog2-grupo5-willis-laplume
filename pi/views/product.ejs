@@ -7,49 +7,74 @@
 	<%- include('partials/header') %>
 	<!-- /Header -->
 	
+	<!-- Banner -->
+	<div class="banner">
+		<img src="/images/banner.jpeg" alt="Banner de ofertas">
+	</div>
+	<!-- /Banner -->
 
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= productos[0].nombre %></h2> 
-			<p class="product-detail-description">
-				<!-- <a href="product-add.html">Editar</a> -->
-			</p>
+			<h2 class="products-title"><%= producto.nombre %></h2> 
+		
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= productos[0].imagen %>" alt="" class="product-detail-img">
+					<img src="<%= producto.imagen %>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= productos[0].descripcion %></p>
+						<%= producto.descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<%for (let index=0; index < productos[0].comentarios.length; index++) {%>
+						<%for (let i = 0; i < producto.comentarios.length; i++) {%>
 							<article>
-								<img src=<%=productos[0].comentarios[index].imagen%> alt="">
+								<img src="<%= producto.comentarios[i].usuario.fotoPerfil %>" alt="">
 								<div class="data">
 									<p class="user">
-										<strong><a href="/users/profile">
-												<%=productos[0].comentarios[index].nombre%>
+										<strong><a href="/profile/<%=  producto.comentarios[i].usuario.id %>">
+												<%= producto.comentarios[i].usuario.usuario %>
 											</a></strong>
-										<%= productos[0].comentarios[index].comentario%>
+										<%= producto.comentarios[i].texto %>
 									</p>
 								</div>
 							</article>
 							<%}%>
-
 					</section>
-					<form class="form" action="" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
+					<% if (user !== undefined) { %>
+						<form class="form" action="/comment-add/<%= producto.id %>" method="post">
+							<input 
+								class="form-input"
+								type="text"
+								name="comentario"
+								placeholder="Agregar comentario">
+
+							<% if (errores.length > 0) { %>
+								<% for (let i = 0; i < errores.length; i++) { %>
+									<% if (errores[i].path === "comentario") { %>
+										<label class="form-label"><%= errores[i].msg %></label>
+									<% } %>
+								<% } %>
+							<% } %>
+							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						</form>
+					<% } else { %>
+						<p>Debes estar logueado para comentar.</p>
+					<% } %>
+					<div class="d-flex justify-content-around">
+						<% if (condicion_editar_borrar) { %>
+							<a href="/product-edit/<%= producto.id %>" class="buy-now-button">EDITAR</a>
+							<a href="/product-delete/<%= producto.id %>" class="buy-now-button">BORRAR</a>
+						<% } %>
+						</div>
 					<hr>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- /product detail -->
+
 
 	<!-- footer -->
 	

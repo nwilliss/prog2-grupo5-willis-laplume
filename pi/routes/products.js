@@ -10,11 +10,26 @@ let addValidation = [
     body("descripcion").notEmpty.withMessage("Debes completar la descripción"),
 ];
 
+// ACA FALTA EL LET  VALIDATIONS DE EDIT 
+
+let commentValidation = [
+    body("comentario")
+        .notEmpty().withMessage("Debes completar el comentario").bail()
+        .isLength({min: 3}).withMessage("El comentario debe tener al menos 3 caracteres"),
+];
+
 router.get("/product-add", productController.validateAdd);
-router.post("/product-add",addValidatio, productController.add);
+router.post("/product-add",addValidation, productController.add);
 
 router.get("/buscador", productController.search);
 
 router.get("/product/:id", productController.product);
+
+router.post("/comment-add/:id", commentValidation, productController.addComment)
+
+router.get("/product-edit/:id", productController.validateEdit);
+router.post("/product-edit/:id", editValidation, productController.edit);
+
+router.get("/product-delete/:id", productController.delete);
 
 module.exports = router;

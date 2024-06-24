@@ -26,36 +26,29 @@ app.use(session({
 }));
 
 app.use(function(req,res,next){
-  res.locals.user = undefined;
-
-  if (req.cookies.user !== undefined && req.session.user === undefined) {
-    Usuario.findByPK(parseInt(req.cookies.user))
-      .then(function(response){
-        let objUsuario = {
-          id: response.id,
-          email: response.email,
-          Usuario: response.Usuario,
-          fecha: response.fecha,
-          dni: response.dni,
-          fotoPerfil: response.fotoPerfil,
-          createdAt: response.createdAt,
-          updatedAt: response.updatedAt,
-          deletedAt: response.deletedAt,
-        };
-        req.session.user = objUsuario;
+  if (req.cookies.user !== undefined && req.session.user == undefined) { // Hay cookie, no session
+      Usuario.findByPk(req.cookies.user)
+        .then(function (response) {
+          req.session.user = response;
+          res.locals.user = req.session.user;
+      })
+        .catch(function (error) {
+          console.log(error);
+      })
+} else {
+    if (req.session.user !== undefined) {
         res.locals.user = req.session.user;
-        next();
-      })
-      .catch(function(error){
-        return res.send(error);
-      })
-  } else if (req.session.user !== undefined) {
-    res.locals.user = req.session.user;
-    next();
-  } else {
-    next()
+   }
   }
-})
+return next();
+});
+
+app.use(function (req, res, next) {
+if (req.session !== undefined) {
+  res.locals.user = req.session.user;
+}
+return next();
+});
 
 app.use('/', indexRouter);
 app.use('/', productRouter);
