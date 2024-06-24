@@ -9,10 +9,10 @@ let addValidation = [
     .notEmpty().withMessage("Debes subir una imagen"),
 
     body("nombre")
-    .notEmpty.withMessage("Debes completar el nombre"),
+    .notEmpty().withMessage("Debes completar el nombre"),
 
     body("descripcion")
-    .notEmpty.withMessage("Debes completar la descripción"),
+    .notEmpty().withMessage("Debes completar la descripción"),
 ];
 
 let editValidation = [
@@ -21,7 +21,7 @@ let editValidation = [
     
     body("nombre")
     .notEmpty().withMessage("Debes completar el nombre"),
-    
+
     body("descripcion")
     .notEmpty().withMessage("Debes completar la descripción"),
 ];
