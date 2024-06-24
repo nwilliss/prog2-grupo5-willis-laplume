@@ -4,19 +4,42 @@ const Comentario = db.Comentario;
 const Op = db.Sequelize.Op; 
 const { validationResults } = require("express-validator");
 
-var productController = {
-  product: function (req, res) {
-    Producto.findAll({
-      where: {
-        productosId: req.params.id,
-      },
-    }).then(function (productos) {
-      res.render("product", { productos: productos });
-    });
-    res.render("product", { productos: db.productos });
-  },
 
-  validatedAdd: function (req,res) {
+var productController = {
+	product: function (req, res) {
+		Producto.findByPk(req.params.id, {
+			include: [
+				{
+					association: "usuario"
+				},
+				{
+					association: "comentarios",
+					include: [
+						{
+							association: "usuario"
+						}
+					]
+				}
+			]
+		})
+		.then(function (producto) {
+			if (producto !== null) {
+				return res.render("product", { 
+					producto : producto, // El producto
+					condicion_editar_borrar : req.session.user !== undefined && req.session.user.id === producto.usuarioId, // Si el usuario puede editar o borrar el producto. Debe estar logueado y ser el dueño del producto.
+					errores: []
+				})
+			} else {
+				return res.send("Producto no encontrado")
+			}
+		})
+		.catch(function (error) {
+			return res.send(error)
+		})
+	},
+
+
+  validateAdd: function (req,res) {
     if (req.session.user !== undefined){
       return res.render ("product-add", {errors :[] })
     }else {
@@ -25,29 +48,25 @@ var productController = {
   },
 
   add: function (req, res) {
-    //res.render("product-add");
-    let errors = validationResult(req);
+		let errors = validationResult(req);
 
-      if (errors.isEmpty()) {
-        let producto = req.body;
-        producto.usuarioId = req.session.user.id;
-        Producto.create(producto)
+		if (errors.isEmpty()) {
+			let producto = req.body;
+			producto.usuarioId = req.session.user.id;
+			Producto.create(producto)
+				.then(function (response) {
+					return res.redirect("/product/" + response.id)
+					// return res.redirect("/")
+				})
+				.catch(function (error) {
+					return res.render("product-add", { errores : errors.errors })
+				})
+		} else {
+			return res.render("product-add", { errores : errors.errors })
+		}
+	},
 
-		//CAMBIAR ESTO
-
-
-//         .then(function(response){
-// //           return res.redirect("/")
-
-// //         })
-// //         .catch(function(error){
-// //           return res.send(error)
-
-// //         })
-// //       } else {
-// //         return res.render("product-add", {errors : errors })
-// //       }
-// //   },
+		
 
   search: function (req, res) {
     let busqueda = req.query.search;

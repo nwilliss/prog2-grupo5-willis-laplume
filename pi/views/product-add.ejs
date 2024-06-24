@@ -24,24 +24,48 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			
-<!-- desde aca incompleto punto 8  -->
-			<form action='/product-add' method='post'>
-				<div class='form-group'>
-					<label for='pic'>Foto del producto</label>
-					<input type='text'class='form-control' id='pic' name='imagen'>
-				</div>
-				<div class="form-group">
-					<label for="name">Nombre del producto</label>
-					<input type="text" class="form-control" id="name" name="nombre" placeholder="Nombre del producto">
-				</div>
-				<div class="form-group	">
-					<label for="description">Descripción</label>
-					<textarea class="form-control" id="description" name="descripcion" placeholder="Descripción"></textarea>
-				</div>
-				<button type="submit" class="btn btn-primary">Agregar producto</button>
-			</form>
+	<form action='/product-add' method='post' class="form col-12 col-lg-8">
+		<div class='form-group'>
+			<label class="form-label" for='pic'>Foto del producto</label>
+			<input 
+				type='text' 
+				class='form-input' 
+				name='imagen'
+				placeholder="Ingrese la URL de la imagen">
+			<% for (let i = 0; i < errores.length; i++) { %>
+				<% if (errores[i].path === "imagen") { %>
+					<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+				<% } %>
+			<% } %>
+		</div>
+		<div class="form-group">
+			<label class="form-label" for="name">Nombre del producto</label>
+			<input 
+				type="text" 
+				class="form-input" 
+				name="nombre" 
+				placeholder="Ingrese el nombre del producto">
+			<% for (let i = 0; i < errores.length; i++) { %>
+				<% if (errores[i].path === "nombre") { %>
+					<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+				<% } %>
+			<% } %>
+		</div>
+		<div class="form-group	">
+			<label class="form-label" for="description">Descripción</label>
+			<textarea 
+				class="form-input" 
+				name="descripcion" 
+				placeholder="Ingrese la descripción del producto"></textarea>
+			<% for (let i = 0; i < errores.length; i++) { %>
+				<% if (errores[i].path === "descripcion") { %>
+					<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+				<% } %>
+			<% } %>
+		</div>
+		<button type="submit" class="buy-now-button">Agregar producto</button>
+	</form>
 
-<!-- hasta aca  -->
 		</div>
 	</div>
 
