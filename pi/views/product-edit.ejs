@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<%- include('partials/head') %>
+
+<body>
+	<!-- Header -->
+
+	<%- include('./partials/header') %>
+
+	<!-- /Header -->
+
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar producto</h2>
+			</div>
+
+			<form action='/product-edit/<%= producto.id %>' method='post' class="form col-12 col-lg-8">
+				<div class='form-group'>
+					<label class="form-label" for='imagen'>Foto del producto</label>
+					<input 
+						type='text' 
+						class='form-input'
+						name='imagen'
+						placeholder="URL de la imagen"
+						value="<%= producto.imagen %>"
+					>
+					<% for (let i = 0; i < errores.length; i++) { %>
+						<% if (errores[i].path === "imagen") { %>
+							<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+						<% } %>
+					<% } %>
+				</div>
+				
+			</form>
+
+		</div>
+	</div>
+
+	<!-- footer -->
+
+	<%- include('partials/footer')%>
+
+	<!-- /footer -->
+</body>
+
+</html>
