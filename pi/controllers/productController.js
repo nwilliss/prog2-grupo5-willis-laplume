@@ -2,7 +2,7 @@ var db = require("../database/models");
 const Producto = db.Producto;
 const Comentario = db.Comentario;
 const Op = db.Sequelize.Op; 
-const { validationResults } = require("express-validator");
+const { validationResult } = require("express-validator");
 
 
 var productController = {

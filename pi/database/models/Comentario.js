@@ -35,7 +35,7 @@ let alias = "Comentario"
       });
       Comentario.belongsTo(models.Producto, {
         as: "producto",
-        foreignKey: "productosId",
+        foreignKey: "productoId",
       });
     };
     
