@@ -11,7 +11,12 @@
 
 	<!-- /Header -->
 
-
+    <!-- Banner -->
+	<div class="banner">
+		<img src="/images/banner.jpeg" alt="Banner de ofertas">
+	</div>
+	<!-- /Banner -->
+    
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
@@ -35,12 +40,41 @@
 						<% } %>
 					<% } %>
 				</div>
-				
-			</form>
+          
+            <div class="form-group">
+                <label class="form-label" for="nombre">Nombre del producto</label>
+                <input 
+                    type="text" 
+                    class='form-input'
+                    name="nombre" 
+                    placeholder="Nombre del producto"
+                    value="<%= producto.nombre %>"
+                >
+                <% for (let i = 0; i < errores.length; i++) { %>
+                    <% if (errores[i].path === "nombre") { %>
+                        <label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+                    <% } %>
+                <% } %>
+            </div>
+            <div class="form-group	">
+                <label class="form-label" for="descripcion">Descripción</label>
+                <textarea 
+                    class='form-input'
+                    name="descripcion" 
+                    placeholder="Descripción"
+                ><%= producto.descripcion %></textarea>
+                <% for (let i = 0; i < errores.length; i++) { %>
+                    <% if (errores[i].path === "descripcion") { %>
+                        <label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+                    <% } %>
+                <% } %>
+            </div>
+            <button type="submit" class="buy-now-button">Editar producto</button>
+        </form>
 
-		</div>
-	</div>
-
+    </div>
+</div>
+			
 	<!-- footer -->
 
 	<%- include('partials/footer')%>
