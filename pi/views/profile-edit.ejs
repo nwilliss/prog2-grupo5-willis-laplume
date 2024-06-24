@@ -9,72 +9,119 @@
 
 	<%-include('partials/header')%>
 
-	<!-- /Header -->
+	<!-- Header -->
+
+	<!-- Banner-->
+
+	<div class="banner">
+		<img src="/images/banner.jpeg" alt="Banner de ofertas">
+	</div>
+
+	<!-- Banner-->
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Editar mi perfil</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<!-- <h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de edición de datos del perfil de usuario. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos deñ usuario<br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			//////////////// -->
-			</h2>
-			
 
-			<form action="/register" method="GETE" class="col-12">
-				<div class="form-group">
-					<label for="name">Nombre</label>
+				<form action="/profile-edit" method="post" class="form col-12 col-lg-8">
+					<div class="form-group">
+						<label for="email" class="form-label">Email</label>
+						<input 
+							class="form-input" 
+							type="email" 
+							name="email" 
+							value="<%= usuario.email %>">
+							<% for (let i = 0; i < errores.length; i++) { %>
+								<% if (errores[i].path === "email") { %>
+									<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+								<% } %>
+							<% } %>
+					</div>
+
+
+					<div class="form-group">
+						<label for="usuario" class="form-label">Usuario</label>
+						<input 
+							class="form-input" 
+							type="text" 
+							name="usuario" 
+							value="<%= usuario.usuario %>">
+							<% for (let i = 0; i < errores.length; i++) { %>
+								<% if (errores[i].path === "usuario") { %>
+									<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+								<% } %>
+							<% } %>
+					</div>
+
+
+					<div class="form-group">
+						<label for="contrasenia" class="form-label">Contraseña</label>
+						<input 
+							class="form-input" 
+							type="password" 
+							name="contrasenia"
+							placeholder="Escriba aquí su contraseña">
+							<% for (let i = 0; i < errores.length; i++) { %>
+								<% if (errores[i].path === "contrasenia") { %>
+									<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+								<% } %>
+							<% } %>
+					</div>
+
+
+					<div class="form-group">
+						<label for="fecha" class="form-label">Fecha de nacimiento</label>
+						<input 
+							class="form-input" 
+							type="date"
+							name="fecha"
+							value="<%= usuario.fecha %>">
+							<% for (let i = 0; i < errores.length; i++) { %>
+								<% if (errores[i].path === "fecha") { %>
+									<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+								<% } %>
+							<% } %>
+					</div>
+
+
+					<label for="dni" class="form-label">Número de documento</label>
 					<input 
-					required
-					
-					type="text" class="form-control" id="name" name="name" placeholder="Ingresá tu nombre">
+						class="form-input" 
+						type="number" 
+						name="dni"
+						value="<%= usuario.dni %>">
+						<% for (let i = 0; i < errores.length; i++) { %>
+							<% if (errores[i].path === "dni") { %>
+								<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+							<% } %>
+						<% } %>
 				</div>
+
+
 				<div class="form-group">
-					<label for="email">Correo electrónico</label>
+					<label for="fotoPerfil" class="form-label">Foto de perfil</label>
 					<input 
-					required
-					type="email" class="form-control" id="email" name="email" placeholder="Ingresá tu correo electrónico">
+						class="form-input" 
+						type="text" 
+						name="fotoPerfil"
+						value="<%= usuario.fotoPerfil %>">
+						<% for (let i = 0; i < errores.length; i++) { %>
+							<% if (errores[i].path === "fotoPerfil") { %>
+								<label class="form-label text-danger font-weight-bold"><%= errores[i].msg %></label>
+							<% } %>
+						<% } %>
 				</div>
-				<div class="form-group">
-					<label for="password">Contraseña</label>
-					<input 
-					required
-					type="password" class="form-control" id="password" name="password" placeholder="Ingresá tu contraseña">	
-				</div>
-				<div class="form-group">
-					<label for="birth-date">Fecha de nacimiento</label>
-					<input 
-					required
-					type="date" class="form-control" id="birth-date" name="password" placeholder="birth-date">
-				</div>
-				<div class="form-group">
-					<label for="doc">Nro de Documento</label>
-					<input 
-					required
-					type="number" class="form-control" id="doc" name="doc"
-					placeholder="Ingresá tu número de documento"
-					>
-				</div>
-				<div class="form-group">
-					<label for="pic">Foto de Perfil</label>
-					<input 
-					required
-					type="text" class="form-control" id="pic" name="pic"
-					placeholder='Ingresá la URL de tu foto de perfil'
-					>
-				</div>
-				<button type="submit" class="btn btn-primary">Registrarse</button>	
+				<button class="btn buy-now-button" type="submit">Editar perfil</button>
 			</form>
 
+		</div>
+
+	</div>
 	<!-- footer -->
 
 	<%-include('partials/footer')%>
-
 	<!-- /footer -->
 </body>
 

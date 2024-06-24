@@ -36,18 +36,20 @@ let registerValidations = [
 ];
 
 /* GET users listing. */
-router.get ("/login", userController.index);
+router.get("/login", userController.showLogin);
 
-router.post("/login", userController.login)
+router.post("/login", loginValidation, userController.login) // Agregar validation
 
 router.post("/logout", userController.logout);
 
 router.get("/register", userController.register);
 
+
 router.post("/store", registerValidations, userController.store);
 
 router.get("/profile-edit", userController.profileEdit);
+router.post("/profile-edit", profileEditValidation, userController.profileUpdate);
 
-router.get("profile/:id?", userController.profile)
+router.get("/profile/:id?", userController.profile); // El id es opcional porque puede que no se pasa (cuando queremos ver nuestro propio perfil)
 
 module.exports = router;
