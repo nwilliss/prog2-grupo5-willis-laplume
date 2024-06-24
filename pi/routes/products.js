@@ -10,7 +10,11 @@ let addValidation = [
     body("descripcion").notEmpty.withMessage("Debes completar la descripción"),
 ];
 
-// ACA FALTA EL LET  VALIDATIONS DE EDIT 
+let editValidation = [
+    body("imagen").notEmpty().withMessage("Debes subir una imagen"),
+    body("nombre").notEmpty().withMessage("Debes completar el nombre"),
+    body("descripcion").notEmpty().withMessage("Debes completar la descripción"),
+];
 
 let commentValidation = [
     body("comentario")

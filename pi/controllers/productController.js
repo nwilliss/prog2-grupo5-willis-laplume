@@ -75,7 +75,73 @@ var productController = {
   
   },
 
-  //VALIDATE EDIT, EDIT Y DELETE 
+  validateEdit: function (req, res) {
+		Producto.findByPk(req.params.id)
+			.then(function (producto) {
+				if (producto !== null) {
+					if (req.session.user !== undefined && req.session.user.id === producto.usuarioId) {
+						return res.render("product-edit", { producto : producto, errores : [] })
+					} else {
+						return res.redirect("/login")
+					}
+				} else {
+					return res.send("Producto no encontrado")
+				}
+			})
+			.catch(function (error) {
+				return res.send(error)
+			})
+	},
+
+	edit: function (req, res) {
+		let errors = validationResult(req);
+
+		if (errors.isEmpty()) {
+			Producto.update(req.body, {
+				where: {
+					id: req.params.id
+				}
+			})
+				.then(function () {
+					return res.redirect("/product/" + req.params.id)
+				})
+				.catch(function (error) {
+					return res.send(error)
+				})
+		} else {
+			Producto.findByPk(req.params.id)
+				.then(function (producto) {
+					return res.render("product-edit", { producto : producto, errores : errors.errors })
+				})
+				.catch(function (error) {
+					return res.send(error)
+				})
+		}
+	},
+
+	delete: function (req, res) {
+		Producto.findByPk(req.params.id)
+			.then(function (producto) {
+				if (producto !== null && req.session.user !== undefined && req.session.user.id === producto.usuarioId) {
+					Producto.destroy({
+						where: {
+							id: req.params.id
+						}
+					})
+					.then(function () {
+						return res.redirect("/")
+					})
+					.catch(function (error) {
+						return res.send(error)
+					})
+				} else {
+					return res.send("Producto no encontrado")
+				}
+			})
+			.catch(function (error) {
+				return res.send(error)
+			})
+	},
 
   addComment: function (req, res) {
 
