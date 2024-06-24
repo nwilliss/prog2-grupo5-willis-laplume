@@ -20,7 +20,7 @@ const indexController = {
             })
             
     },
-
+//SACAR SEARCH
     search: function(req,res) {
         res.render ("search-results");
     }

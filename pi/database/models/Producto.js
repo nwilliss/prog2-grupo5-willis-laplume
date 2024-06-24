@@ -24,7 +24,7 @@ let cols = {
 let config = {
   tableName: "productos",
   timestamps: true,
-  underscored: true,
+  underscored: false,
 };
 
 

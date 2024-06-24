@@ -14,8 +14,16 @@ const userController = {
     if (req.session.usuario !== undefined) {
       return res.redirect("/login");
     }
-    res.render("register");
+    res.render("register", {errores: []});
   },
+
+
+//cambiar lo que esta abajo no funciona bien 
+
+
+
+
+
   profile: function (req, res) {
     let id;
 

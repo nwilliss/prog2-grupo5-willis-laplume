@@ -3,7 +3,7 @@ module.exports=
   "development": {
     "username": "root",
     "password": "root",
-    "database": "database_development",
+    "database": "pi",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

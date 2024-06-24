@@ -23,7 +23,7 @@ let alias = "Comentario"
     let config ={
         tableName: "comentarios",
         timestamps: true,
-        underscored: true,
+        underscored: false,
 
     }; 
     

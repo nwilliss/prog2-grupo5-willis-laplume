@@ -3,37 +3,59 @@ var router = express.Router();
 var userController = require("../controllers/usersController");
 let { body } = require("express-validator");
 const indexController = require("../controllers/indexController");
+const db = require("../database/models");
+const Usuario = db.Usuario;
+const Op = db.Sequelize.Op;
+
 
 let registerValidations = [
-  body("email") //vas a login ejs y te fijas el nombre del campo
-    .notEmpty()
-    .withMessage("por favor complete el campo email.")
-    .bail()
-    .isEmail()
-    .withMessage("ingrese emial valido")
-
-    .custom(function (value) {
-      //validar que el email exista en la base de datos
-      return db.User.findOne({
-        where: { email: value },
-      }).then(function (user) {
-        if (!user) {
-          throw new Error("el email no se encuentra registrado");
-        }
-      });
-    }),
+	body("email") //vas a login ejs y te fijas el nombre del campo
+		.notEmpty().withMessage("El campo email no puede quedar vacío").bail()
+		.isEmail().withMessage("Ingrese email válido")
+		.custom(function (value) {
+			//validar que el email exista en la base de datos
+			return Usuario.findOne({
+				where: { email: value },
+			}).then(function (user) {
+				if (user) {
+					throw new Error("El email ya se encuentra registrado");
+				}
+			});
+		}),
 
 
-  body("nombre").notEmpty().withMessage("por favor complete el campo nombre."),
+	body("usuario")
+		.notEmpty().withMessage("por favor complete el campo nombre.").bail()
+		.isLength({ min: 3 }).withMessage("el nombre debe tener al menos 3 caracteres").bail()
+		.custom(function (value) {
+			return Usuario.findOne({
+				where: { usuario: value },
+			}).then(function (user) {
+				if (user) {
+					throw new Error("El nombre ya se encuentra registrado");
+				}
+			});
+		}),
 
-  body("password")
-    .notEmpty()
-    .withMessage("por favor complete la contrasena")
-    .bail()
-    .isLength({ min: 4 })
-    .withMessage("la constrasena debe tener al menos 4 caracteres"),
-  //falta poner que este en forma encriptada hashing hppt
+	body("contrasenia")
+		.notEmpty().withMessage("El campo contraseña no puede quedar vacío").bail()
+		.isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres"),
+
+	body("fecha")
+		.notEmpty().withMessage("El campo fecha no puede quedar vacío"),
+
+	body("dni")
+		.notEmpty().withMessage("El campo dni no puede quedar vacío").bail()
+		.isNumeric().withMessage("El campo dni debe ser numérico").bail()
+		.isLength({ min: 7, max: 8 }).withMessage("El campo dni debe tener entre 7 y 8 caracteres"),
+
+	body("fotoPerfil")
+		.notEmpty().withMessage("El campo foto de perfil no puede quedar vacío"),
 ];
+
+//AGREGAR PUNTO 11 
+
+
 
 /* GET users listing. */
 router.get("/login", userController.showLogin);

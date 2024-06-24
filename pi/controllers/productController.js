@@ -32,18 +32,22 @@ var productController = {
         let producto = req.body;
         producto.usuarioId = req.session.user.id;
         Producto.create(producto)
-        .then(function(response){
-          return res.redirect("/")
 
-        })
-        .catch(function(error){
-          return res.send(error)
+		//CAMBIAR ESTO
 
-        })
-      } else {
-        return res.render("product-add", {errors : errors })
-      }
-  },
+
+//         .then(function(response){
+// //           return res.redirect("/")
+
+// //         })
+// //         .catch(function(error){
+// //           return res.send(error)
+
+// //         })
+// //       } else {
+// //         return res.render("product-add", {errors : errors })
+// //       }
+// //   },
 
   search: function (req, res) {
     let busqueda = req.query.search;

@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<!-- Include Head -->
+
 <%- include('partials/head') %>
 
 <body>
+	<!-- Header -->
 
 	<%- include('./partials/header') %>
 
+	<!-- /Header -->
+
+	<!-- Banner -->
+	<div class="banner">
+		<img src="/images/banner.jpeg" alt="Banner de ofertas">
+	</div>
+	<!-- /Banner -->
+
 	<div class="container products-wrapper">
 		<div class="row">
-			
+			<div  class= "col-12">
+				<h2 class ="products-title"> Resultados de busqueda</h2>
+			</div>
 		<div class="container products-wrapper">
 			<div class="row">
 
@@ -28,13 +41,6 @@
 						</section>
 					</div>
 				<% } %>
-			
-
-				<div class="col-12">
-					<p> no se enconttraron resultados para tu busqueda.</p>
-					<p>intenta con otro termino. </p>
-		
-				</div>
 			
 			</div>
 
