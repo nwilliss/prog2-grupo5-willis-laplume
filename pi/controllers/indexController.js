@@ -1,6 +1,6 @@
 
 const db = require("../database/models");
-const Productos = db.Productos;
+const Producto = db.Producto;
 
 
 
@@ -12,7 +12,7 @@ const indexController = {
                 {association : "usuario"}
             ],
         })
-            .then(function(Productos) {
+            .then(function(productos) {
                 return res.render("index", {productos : productos});
             })
             .catch(function(error) {
