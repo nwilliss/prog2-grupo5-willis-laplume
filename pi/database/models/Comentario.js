@@ -13,7 +13,7 @@ let alias = "Comentario"
         usuarioId:{
             type: dataTypes.INTEGER
         },
-        productosId:{
+        productoId:{
             type: dataTypes.INTEGER
         },
         

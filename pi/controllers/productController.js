@@ -41,9 +41,9 @@ var productController = {
 
   validateAdd: function (req,res) {
     if (req.session.user !== undefined){
-      return res.render ("product-add", {errors :[] })
+      return res.render ("product-add", {errores :[] })
     }else {
-      return res.render("/login")
+      return res.redirect("/login")
     }
   },
 

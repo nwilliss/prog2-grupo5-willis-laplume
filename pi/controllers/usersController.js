@@ -1,5 +1,7 @@
 
+const { validationResult } = require("express-validator");
 const db = require("../database/models");
+const Usuario = db.Usuario;
 const bcrypt = require("bcryptjs");
 
 const userController = {
@@ -7,7 +9,7 @@ const userController = {
     if (req.session.user !== undefined) {
       return res.redirect("/");
     } else {
-      res.render("login",{ error: "" });
+      res.render("login",{ errores: "" });
     }
   }, 
   register: function (req, res) {
