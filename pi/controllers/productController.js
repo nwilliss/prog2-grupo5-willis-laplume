@@ -143,28 +143,39 @@ var productController = {
 	},
 
 	delete: function (req, res) {
-		Producto.findByPk(req.params.id)
-			.then(function (producto) {
-				if (producto !== null && req.session.user !== undefined && req.session.user.id === producto.usuarioId) {
-					Producto.destroy({
-						where: {
-							id: req.params.id
-						}
-					})
-					.then(function () {
-						return res.redirect("/")
-					})
-					.catch(function (error) {
-						return res.send(error)
-					})
-				} else {
-					return res.send("Producto no encontrado")
-				}
-			})
-			.catch(function (error) {
-				return res.send(error)
-			})
-	},
+
+        Producto.findByPk(req.params.id)
+            .then(function (producto) {
+                if (producto !== null && req.session.user !== undefined && req.session.user.id === producto.usuarioId) {
+                    Comentario.destroy({
+                        where : {
+                            productoId : req.params.id
+                        }
+                    })
+                        .then(function () { // Este es el then de Comentario.destroy
+                            Producto.destroy({
+                                where: {
+                                    id: req.params.id
+                                }
+                            })
+                                .then(function () { // Este es el then de Producto.destroy
+                                    return res.redirect("/") 
+                                })
+                                .catch(function (error) { // Este es el catch de Producto.destroy
+                                    return res.send(error)
+                                })
+                        })
+                        .catch(function (error) { // Este es el catch de Comentario.destroy
+                            return res.send(error)
+                        })
+                } else {
+                    return res.send("Producto no encontrado")
+                }
+            })
+            .catch(function (error) {
+                return res.send(error)
+            })
+    },
 
   addComment: function (req, res) {
 
